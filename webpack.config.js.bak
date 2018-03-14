@@ -32,8 +32,7 @@ module.exports = {
       inject: 'body'
     }),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    // new UglifyJSPlugin() // production only due to speed
+    new webpack.HotModuleReplacementPlugin(),    
   ],
   devServer: {
     contentBase: path.resolve(__dirname, output_dir),
