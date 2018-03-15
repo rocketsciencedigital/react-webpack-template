@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --progress --colors --config webpack.prod.js",
+    "build": "node_modules/.bin/webpack --progress --colors --config webpack.prod.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "server": "node server.js"
   },
   "author": "",

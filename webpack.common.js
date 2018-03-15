@@ -2,22 +2,23 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const DotEnv = require('dotenv-webpack')
 
 const output_dir = 'dist'
 const src_dir = 'src'
+const port = process.env.PORT || 8080
+const host = process.env.HOST || '0.0.0.0'
 
 module.exports = {
   constants: {
     output_dir: output_dir,
     src_dir: src_dir,
-    host: '0.0.0.0'
+    host: host,
+    port: port
   },
   config: {
     entry: {
       polyfills: path.resolve(src_dir, 'polyfills.js'),
-      vendor: [
-        'lodash',
+      vendor: [        
         'react'
       ],
       print: path.resolve(src_dir, 'print.js'),
@@ -65,7 +66,13 @@ module.exports = {
         inject: 'body'
       }),
       new webpack.NamedModulesPlugin(),   
-      new DotEnv()   
+      // new DotEnv()  
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'production',
+        DEBUG: false,
+        API_URL: 'localhost:8081',
+        PORT: port
+      }) 
     ]
   }
 }

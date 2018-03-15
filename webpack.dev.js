@@ -13,6 +13,7 @@ module.exports = merge.smart(common.config, {
   devServer: {
     contentBase: path.resolve(__dirname, common.constants.output_dir),
     hot: true,
-    host: common.constants.host
+    host: common.constants.host,
+    port: common.constants.port
   }
 })

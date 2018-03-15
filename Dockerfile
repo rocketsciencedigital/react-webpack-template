@@ -11,11 +11,14 @@ RUN npm config set registry http://registry.npmjs.org/ && npm install
 
 COPY . .
 
+RUN npm run build
+
 # RUN cp -a /tmp/node_modules .
+# ENV NODE_ENV=development
+EXPOSE 3000
 
+USER node
 
-ENV NODE_ENV=development
+# CMD ['node_modules/.bin/webpack-dev-server']
+CMD ['node', 'server.js']
 
-CMD ['node_modules/.bin/webpack-dev-server']
-
-EXPOSE 8080
